@@ -23,4 +23,10 @@ FactoryGirl.define do
     war true
     western true
   end
+
+  factory :user do
+    email "user@example.com"
+    password "password"
+  end
+
 end

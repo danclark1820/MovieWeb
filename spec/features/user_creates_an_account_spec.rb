@@ -10,6 +10,7 @@ feature "User adds entry to registry", %q{
 # *A sign up and authentication system for your users
 # *I must provide  an unused email
 # *I must provide a password
+# *I must confirm my password
 
 
   it "can sign up" do
@@ -20,7 +21,8 @@ feature "User adds entry to registry", %q{
     fill_in 'user_password_confirmation', with: 'password'
     click_on 'Sign up'
 
-    expect(page).to have_content "Welcome"
+
+    expect(page).to have_content "Welcome to Movie Web"
     expect(User.count).to eql(count + 1)
   end
 end

@@ -1,5 +1,5 @@
 MovieWeb::Application.routes.draw do
-  #root to: 'devise/sessions#create'
+  root to: 'movies#index'
   resources :movies
   devise_for :users
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature "User adds entry to registry" %q{
-  As a user,
+feature "User adds entry to registry", %q{
+  As an un-authenticated user,
   I want to securely register for an account,
   so that I can rate movies.
 } do
@@ -17,10 +17,9 @@ feature "User adds entry to registry" %q{
     count = User.count
     visit new_user_registration_path
     fill_in 'Email', with: 'user@example.com'
-    fill_in 'Username', with: 'moviewatcher'
     fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
-    click_on 'Sign Up'
+    click_on 'Sign up'
 
     expect(page).to have_content "Welcome"
     expect(User.count).to eql(count + 1)

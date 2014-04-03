@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "User adds entry to registry", %q{
+feature "User visits sign in page", %q{
   As an un-authenticated user,
   I want to securely sign in to my account,
   so I can get ideas for what movies I should watch

@@ -43,7 +43,7 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'valid_attribute'
   gem 'quiet_assets'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password

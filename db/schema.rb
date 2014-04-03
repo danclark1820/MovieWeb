@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403145521) do
+ActiveRecord::Schema.define(version: 20140403171907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movies", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title",       null: false
+    t.string   "year",        null: false
+    t.string   "url",         null: false
+    t.boolean  "unknown",     null: false
+    t.boolean  "action",      null: false
+    t.boolean  "adventure",   null: false
+    t.boolean  "animation",   null: false
+    t.boolean  "childrens",   null: false
+    t.boolean  "comedy",      null: false
+    t.boolean  "crime",       null: false
+    t.boolean  "documentary", null: false
+    t.boolean  "drama",       null: false
+    t.boolean  "fantasy",     null: false
+    t.boolean  "filmnoir",    null: false
+    t.boolean  "horror",      null: false
+    t.boolean  "musical",     null: false
+    t.boolean  "mystery",     null: false
+    t.boolean  "romance",     null: false
+    t.boolean  "scifi",       null: false
+    t.boolean  "thriller",    null: false
+    t.boolean  "war",         null: false
+    t.boolean  "western",     null: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

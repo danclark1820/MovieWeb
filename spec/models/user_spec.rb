@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_valid(:email).when('user@example.com') }
+  it { should_not have_valid(:email).when('user@mycom',
+    'usermy.com',
+    'user',
+    '.com',
+    'my.com') }
 end

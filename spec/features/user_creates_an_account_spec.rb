@@ -22,7 +22,7 @@ feature "User adds entry to registry", %q{
     click_on 'Sign up'
 
 
-    expect(page).to have_content "Welcome to Movie Web"
+    expect(page).to have_content "Movie Web"
     expect(User.count).to eql(count + 1)
   end
 end

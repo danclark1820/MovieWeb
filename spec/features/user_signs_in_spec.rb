@@ -16,6 +16,6 @@ feature "User visits sign in page", %q{
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_on 'Sign in'
-    expect(page).to have_content 'Welcome to Movie Web'
+    expect(page).to have_content 'Movie Web'
   end
 end

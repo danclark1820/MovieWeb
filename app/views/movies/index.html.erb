@@ -9,6 +9,10 @@
             <li class="active">
               <%= link_to 'Rate Movies', new_user_session_path %>
             </li>
+          <% else %>
+            <li class="active">
+              <%= link_to 'Rate Movies', new_rating %>
+            </li>
           <% end %>
         </ul>
     </section>

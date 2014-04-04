@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "authenticated user rates movies", %q{
+feature "authenticated user goes to rates movies", %q{
     As a user
     I want to rate movies
     so that I can contribute to the movie web
@@ -15,8 +15,8 @@ feature "authenticated user rates movies", %q{
       it 'goes to rate movies' do
         user = FactoryGirl.create(:user)
         sign_in_as(user)
-        click_button "Rate movies"
-        expect(page).to have_content("You need to rate more movies")
+        click_on "Rate movies"
+        expect(page).to have_content("Movies are rated on a scale of 1-5")
       end
     end
   end

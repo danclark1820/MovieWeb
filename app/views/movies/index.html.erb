@@ -2,4 +2,14 @@
   <% if flash[:notice] %>
     <%= flash[:notice] %>
   <% end %>
+
+  <section >
+        <ul>
+          <% if !user_session %>
+            <li class="active">
+              <%= link_to 'Rate Movies', new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+    </section>
 </p>

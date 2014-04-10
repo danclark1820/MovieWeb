@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140410122802) do
+ActiveRecord::Schema.define(version: 20140410184630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,29 +19,31 @@ ActiveRecord::Schema.define(version: 20140410122802) do
   create_table "movies", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",       null: false
-    t.string   "year",        null: false
-    t.string   "url",         null: false
-    t.boolean  "unknown",     null: false
-    t.boolean  "action",      null: false
-    t.boolean  "adventure",   null: false
-    t.boolean  "animation",   null: false
-    t.boolean  "childrens",   null: false
-    t.boolean  "comedy",      null: false
-    t.boolean  "crime",       null: false
-    t.boolean  "documentary", null: false
-    t.boolean  "drama",       null: false
-    t.boolean  "fantasy",     null: false
-    t.boolean  "filmnoir",    null: false
-    t.boolean  "horror",      null: false
-    t.boolean  "musical",     null: false
-    t.boolean  "mystery",     null: false
-    t.boolean  "romance",     null: false
-    t.boolean  "scifi",       null: false
-    t.boolean  "thriller",    null: false
-    t.boolean  "war",         null: false
-    t.boolean  "western",     null: false
+    t.string   "title",                       null: false
+    t.string   "year",                        null: false
+    t.string   "url",                         null: false
+    t.boolean  "unknown",     default: false, null: false
+    t.boolean  "action",      default: false, null: false
+    t.boolean  "adventure",   default: false, null: false
+    t.boolean  "animation",   default: false, null: false
+    t.boolean  "childrens",   default: false, null: false
+    t.boolean  "comedy",      default: false, null: false
+    t.boolean  "crime",       default: false, null: false
+    t.boolean  "documentary", default: false, null: false
+    t.boolean  "drama",       default: false, null: false
+    t.boolean  "fantasy",     default: false, null: false
+    t.boolean  "filmnoir",    default: false, null: false
+    t.boolean  "horror",      default: false, null: false
+    t.boolean  "musical",     default: false, null: false
+    t.boolean  "mystery",     default: false, null: false
+    t.boolean  "romance",     default: false, null: false
+    t.boolean  "scifi",       default: false, null: false
+    t.boolean  "thriller",    default: false, null: false
+    t.boolean  "war",         default: false, null: false
+    t.boolean  "western",     default: false, null: false
   end
+
+  add_index "movies", ["url"], name: "index_movies_on_url", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

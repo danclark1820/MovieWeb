@@ -11,8 +11,14 @@
             </li>
           <% else %>
             <li class="active">
-              <%= link_to 'Movie Index', movies_path, class: "button" %>
+              <%= link_to 'Add a Movie', new_movie_path, class: "button" %>
             </li>
+          <% end %>
+        </ul>
+
+        <ul class = "movies">
+          <% @movies.each do |movie| %>
+            <li><%= movie.title %></li>
           <% end %>
         </ul>
     </section>

@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :movie do
     title "Forrest Gump"
     year "1996"
-    url "www.imdb.com/awesome_movie"
+    sequence(:url){"www.imdb.com/factory/#{n}"}
     unknown false
     action false
     adventure false

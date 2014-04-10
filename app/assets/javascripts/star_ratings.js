@@ -13,5 +13,15 @@ $(function(){
       }
     }
 
+    $.ajax({
+      type: 'POST',
+      url: '/ratings',
+      data: {
+        rating: {
+          movie_id: movieId,
+          stars: stars
+        }
+      }
+    });
   });
 });

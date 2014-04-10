@@ -19,6 +19,13 @@
         <ul class = "movies">
           <% @movies.each do |movie| %>
             <li><%= movie.title %></li>
+
+            <ul>
+              <% (1..5).each do |i| %>
+                <li class="rating_star" data-movie-id="<%= movie.id %>" data-stars="<%= i %>" id="<%="movie_#{movie.id}_#{i}"%>">star</li>
+              <% end %>
+            </ul>
+
           <% end %>
         </ul>
     </section>

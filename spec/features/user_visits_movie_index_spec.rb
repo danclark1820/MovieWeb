@@ -2,21 +2,18 @@ require 'spec_helper'
 
 feature "authenticated user goes to rates movies", %q{
     As a user
-    I want to rate movies
+    I want to go to the rate movies page
     so that I can contribute to the movie web
   } do
 
     #Acceptance Criteria
-    # * I must be able to view movies
-    # * Pages will have no more then 7 movies on them
-    # * I can rate movies 1 - 5
+    # * I must be able to view get to the new ratings page
 
     context 'authenticated user' do
       it 'goes to rate movies' do
         user = FactoryGirl.create(:user)
         sign_in_as(user)
-        click_on "Rate movies"
-        expect(page).to have_content("Movies are rated on a scale of 1-5")
+        expect(page).to have_content("Movie Index")
       end
     end
   end

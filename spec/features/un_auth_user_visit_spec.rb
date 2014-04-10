@@ -13,7 +13,7 @@ feature " Un_authenticated user tries to rate movies", %q{
   describe "enters site" do
     it "rate list of movies" do
       visit "/movies#index"
-      click_on 'Rate movies'
+      click_on 'Rate Movies'
       expect(page).to have_content("Sign in")
     end
   end

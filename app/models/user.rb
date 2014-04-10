@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has many :ratings
+  has_many :ratings, dependant: :destroy
+  has_many :rated_movies, through: :ratings, source: :movies
 end

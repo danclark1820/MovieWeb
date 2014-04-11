@@ -1,5 +1,6 @@
-function(){
+$(function() {
     $('.star').click( function(e) {
+    // create the variables I'll need for my POST or PUT request
     var starClicked  = $(e.target);
     var numStars     = starClicked.attr('value');
     var movieId      = starClicked.attr('data-movie-id');
@@ -9,6 +10,10 @@ function(){
       stars: numStars
     };
 
+
+    // if the user has not yet rated the movie,
+    // set route variables to  "POST /ratings"
+    // Otherwise, send request to "PUT /ratings/:movie_id"
     if ( userRatingId === ""){
       requestType = "POST";
       path = "/ratings";
@@ -17,10 +22,11 @@ function(){
       path = "/ratings/" + movieId;
     }
 
+    // highlight the appropiate stars & submit or update vote
     hightlightStars(numStars, movieId);
     submitVote(requestType, path, ratingData);
   });
-});
+
 
 var submitVote = function(requestType, path, data){
   $.ajax(

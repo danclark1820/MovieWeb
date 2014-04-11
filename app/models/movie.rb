@@ -4,5 +4,5 @@ class Movie < ActiveRecord::Base
   validates :url,   presence:true, format: {with: /www.imdb.com/, on: :create}
 
   has_many :ratings, dependent: :destroy
-  has_many :raters, through: :ratings, source: :movies
+  has_many :raters, through: :ratings, source: :users
 end

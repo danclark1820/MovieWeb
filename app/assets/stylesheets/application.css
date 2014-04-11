@@ -15,10 +15,3 @@
  *= require font-awesome
  */
 
-.rating_star {
-  display: inline;
-}
-
-.activated {
-  background-color: yellow;
-}

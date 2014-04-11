@@ -1,6 +1,6 @@
 module RatingsHelper
   def rating(user, value, movie)
-    user_rating_id = movie.ratings.where(user: user).take || ''
+    user_rating = movie.ratings.where(user: user).take || ''
     star_id = "movie_#{movie.id}_#{value}"
 
     if user_rating.blank?

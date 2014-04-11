@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    @ratings = Rating.where(user: current_user)
   end
 
   def new

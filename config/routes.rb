@@ -1,7 +1,7 @@
 MovieWeb::Application.routes.draw do
   root to: 'movies#index'
   resources :movies
-  resuorces :ratings, only: [:create, :update, :delete]
+  resources :ratings, only: [:create, :update]
 
   devise_for :users
 end

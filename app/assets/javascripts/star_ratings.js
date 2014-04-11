@@ -1,23 +1,26 @@
-var rates = function(isNew){
-  var starClicked = $(window.event.srcElement);
-  var stars = starClicked.attr('value');
-  var movieId = starClicked.attr('data-movie-id');
-  var ratingData = {
-    movie_id: movieId,
-    stars: stars
-  };
+function(){
+    $('.star').click( function(e) {
+    var starClicked  = $(e.target);
+    var numStars     = starClicked.attr('value');
+    var movieId      = starClicked.attr('data-movie-id');
+    var userRatingId = starClicked.attr('data-user-rating-id');
+    var ratingData   = {
+      movie_id: movieId,
+      stars: numStars
+    };
 
-  if (isNew === ""){
-    requestType = "POST";
-    path = "/ratings";
-  } else {
-    requestType = "PUT";
-    path = "/ratings/" + movieId;
-  }
+    if ( userRatingId === ""){
+      requestType = "POST";
+      path = "/ratings";
+    } else {
+      requestType = "PUT";
+      path = "/ratings/" + movieId;
+    }
 
-  hightlightStars(stars, movieId);
-  submitVote(requestType, path, ratingData);
-  };
+    hightlightStars(numStars, movieId);
+    submitVote(requestType, path, ratingData);
+  });
+});
 
 var submitVote = function(requestType, path, data){
   $.ajax(
@@ -34,9 +37,11 @@ var hightlightStars = function(stars, movieId) {
   for(i = 1; i <= 5; i++){
     star = $('#movie_' + movieId + '_' + i);
     if (i <= stars) {
-      star.addClass('activated');
+      star.addClass('fa-star');
+      star.removeClass('fa-star-o');
     } else {
-      star.removeClass('activated');
+      star.addClass('fa-star-o');
+      star.removeClass('fa-star');
     }
   }
 };

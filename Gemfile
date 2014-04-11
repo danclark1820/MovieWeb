@@ -35,6 +35,7 @@ end
 gem 'devise'
 gem 'simple_form'
 gem 'foundation-rails'
+gem 'font-awesome-sass'
 
 group :test, :development do
   gem 'pry-rails'

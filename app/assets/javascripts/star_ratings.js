@@ -26,6 +26,7 @@ $(function() {
     hightlightStars(numStars, movieId);
     submitVote(requestType, path, ratingData);
   });
+});
 
 
 var submitVote = function(requestType, path, data){

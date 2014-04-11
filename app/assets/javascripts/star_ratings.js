@@ -15,7 +15,7 @@ var rates = function(isNew){
     path = "/ratings/" + movieId;
   }
 
-  hightlightStars(stars, chapstickId);
+  hightlightStars(stars, movieId);
   submitVote(requestType, path, ratingData);
   };
 
@@ -30,7 +30,7 @@ var submitVote = function(requestType, path, data){
   });
 };
 
-var hightlightStars = function(stars, chapstickId) {
+var hightlightStars = function(stars, movieId) {
   for(i = 1; i <= 5; i++){
     star = $('#movie_' + movieId + '_' + i);
     if (i <= stars) {

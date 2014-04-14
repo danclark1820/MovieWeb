@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :movie do
     title "Forrest Gump"
     year "1996"
-    sequence(:url){"www.imdb.com/factory/#{n}"}
+    sequence(:url){|n| "www.imdb.com/#{n}"}
     unknown false
     action false
     adventure false
@@ -25,7 +25,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    email "user@example.com"
+    sequence(:email) {|n| "user#{n}@example.com" }
     password "password"
   end
 

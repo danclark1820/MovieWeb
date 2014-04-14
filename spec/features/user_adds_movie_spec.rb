@@ -14,7 +14,7 @@ feature 'authenticated user adds movie', %q{
   context 'with valid atttributes' do
     it 'adds a movie' do
       user = FactoryGirl.create(:user)
-      movie = FactoryGirl.create(:movie)
+      movie = FactoryGirl.build(:movie)
       sign_in_as(user)
 
       visit new_movie_path
@@ -22,8 +22,7 @@ feature 'authenticated user adds movie', %q{
       fill_in 'Year',     with: movie.year
       fill_in 'IMDb URL', with: movie.url
       click_on "Add Movie"
-
-      within('ul.movies'){expect(movie.title)}
+      within(:css, 'ul.movies li'){expect(movie.title)}
     end
   end
 

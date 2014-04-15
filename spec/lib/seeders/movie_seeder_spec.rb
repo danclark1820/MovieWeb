@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Seeders::MovieSeeder do
 
-  let(:seeder){ Seeders.MovieSeeder }
+  let(:seeder){ Seeders::MovieSeeder }
 
   it 'should seed the data' do
     one_movie = seeder.movie.first

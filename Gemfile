@@ -36,6 +36,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'foundation-rails'
 gem 'font-awesome-sass'
+gem 'rails_12factor'
 
 group :test, :development do
   gem 'pry-rails'

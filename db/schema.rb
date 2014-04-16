@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140410191331) do
+ActiveRecord::Schema.define(version: 20140415230159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140410191331) do
     t.boolean  "thriller",    default: false, null: false
     t.boolean  "war",         default: false, null: false
     t.boolean  "western",     default: false, null: false
+    t.integer  "seed_id"
   end
 
   add_index "movies", ["url"], name: "index_movies_on_url", unique: true, using: :btree
@@ -55,6 +56,11 @@ ActiveRecord::Schema.define(version: 20140410191331) do
 
   add_index "ratings", ["user_id", "movie_id"], name: "index_ratings_on_user_id_and_movie_id", unique: true, using: :btree
 
+  create_table "recommendations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -68,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140410191331) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "seed_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

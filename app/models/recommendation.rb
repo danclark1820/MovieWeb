@@ -3,11 +3,16 @@ class Recommendation < ActiveRecord::Base
   def self.sim_pearson(user_ratings_hash, user_1, user_2)
     #get list of mutually rated items
     mutually_rated={}
-    user_1.ratings.each do |movie|
-      if user_2.ratings.include?(movie)
-        mutually_rated[movie] = 1
+    Rating.where(user_id: user_1).pluck(:movie_id).each do |movie_id|
+      if Rating.where(user_id: user_2).pluck(:movie_id).include?(movie_id)
+        mutually_rated[:movie_id] += 1
       end
     end
+    # user_1.ratings.each do |movie|
+    #   if user_2.ratings.include?(movie)
+    #     mutually_rated[movie] = 1
+    #   end
+    # end
 
     #find the number of elements
     n = len(mutually_rated)
@@ -33,6 +38,7 @@ class Recommendation < ActiveRecord::Base
     #calculte pearson
     numerator = pSum - ( sum_1 * sum_2/n )
     denominator=sqrt((sum_1Sq - sum1**2/n)) * (sum2_sq - sum_2**2/n))
+
     if denominator = 0
       0
     end
@@ -41,6 +47,7 @@ class Recommendation < ActiveRecord::Base
 
     r
   end
+
 
   def getReccomendations(user_ratings_hash, user)
     totals = {}

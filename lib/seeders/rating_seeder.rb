@@ -6,12 +6,12 @@ module Seeders
         require 'csv'
         require 'securerandom'
 
-        datafile = Rails.root + 'db/data/rating.txt'
+        datafile = Rails.root + 'db/data/ratings.txt'
         n = 1
 
         CSV.foreach(datafile, {col_sep: "\t"}) do |row|
-          movie_seed_id = row[1]
-
+          #binding.pry
+          movie_seed_id = row[1].to_i
           movie = Movie.find_by(seed_id: movie_seed_id)
           if movie.nil?
             puts "WARNING: rating found with no associated movie (seed: #{movie_seed_id})"
@@ -28,10 +28,10 @@ module Seeders
               password: SecureRandom.hex
             })
 
-            n += 1
-          end
 
-          Rating.create!(movie: movie, user: user, value: row[2])
+          end
+          n += 1
+          Rating.create!(movie: movie, user: user, stars: row[2])
         end
       end
 

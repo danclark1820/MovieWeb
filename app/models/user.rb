@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  include Recommendations
+
   has_many :ratings, dependent: :destroy
   has_many :rated_movies, through: :ratings, source: :movies
+
+
 end

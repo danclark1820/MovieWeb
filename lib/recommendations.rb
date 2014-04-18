@@ -1,4 +1,4 @@
-module Recommendation
+module Recommendations
 
   def sim_pearson(user_1, user_2)
     #get list of mutually rated items
@@ -43,9 +43,9 @@ module Recommendation
     return r
 
   end
+  binding.pry
 
-
-  def getReccomendations(user)
+  def getRecommendation(user)
     totals = {}
     simSums={}
     all_users = User.all

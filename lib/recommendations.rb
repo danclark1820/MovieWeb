@@ -43,7 +43,7 @@ module Recommendations
     return r
 
   end
-  binding.pry
+
 
   def getRecommendation(user)
     totals = {}

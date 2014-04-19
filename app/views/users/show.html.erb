@@ -1,4 +1,9 @@
 <%= @user.email %>
 
-<%= getRecommendation(@user) %>
+
+
+<% @recs.each do |rec| %>
+  <%= rec %>
+<% end %>
+
 

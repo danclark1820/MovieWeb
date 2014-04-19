@@ -12,6 +12,7 @@
           <% else %>
             <li class="active">
               <%= link_to 'Add a Movie', new_movie_path, class: "button" %>
+              <%= link_to 'View Recommendations',"users/#{@user.id}", class: "button" %>
             </li>
           <% end %>
         </ul>

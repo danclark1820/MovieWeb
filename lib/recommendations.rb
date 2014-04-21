@@ -28,33 +28,34 @@ module Recommendations
         next
       end
 
-      person_ratings = User.where(id: person.id)[0].ratings
-      user_ratings = user.ratings
+      while totals.length < 25 && simSums.length < 25
+        person_ratings = User.where(id: person.id)[0].ratings
+        user_ratings = user.ratings
 
-      person_ratings.each do |rating|
-        #only score movies user has not seen
-        if !user_ratings.include?(rating)
-          #Similarity * Score
-          totals.default = 0
-          totals[rating.movie_id] += rating.stars * sim
-          #Sum of similarities
-          simSums.default = 0
-          simSums[rating.movie_id] += sim
+        person_ratings.each do |rating|
+          #only score movies user has not seen
+          if !user_ratings.include?(rating)
+            #Similarity * Score
+            totals.default = 0
+            totals[rating.movie_id] += rating.stars * sim
+            #Sum of similarities
+            simSums.default = 0
+            simSums[rating.movie_id] += sim
+          end
         end
-
       end
 
     end
-        #create the normalized list
-        rankings = {}
-        totals.each do |movie, sim_score_product|
-          simSums.each do |movie_simSum, sim|
-            rankings[movie] = sim_score_product/sim
-          end
-        end
-        binding.pry
-        rankings.sort_by{|k,v| v}.reverse
+
+    #create the normalized list
+    rankings = {}
+    totals.each do |movie, sim_score_product|
+      simSums.each do |movie_simSum, sim|
+        rankings[movie] = sim_score_product/sim
+      end
+    end
+
+    @new_ranks = rankings.sort_by{|k,v| v}.reverse
 
   end
-
 end

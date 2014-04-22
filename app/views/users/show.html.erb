@@ -1,4 +1,4 @@
-<%= @user.email %>
+<h4><%= @user.email %></h4><br>
   <div>
     <% if @recs.length == 0 %>
 
@@ -6,13 +6,19 @@
 
     <% else %>
 
-      <ul>
+      <ol>
+      <div class="small-6 small-centered columns">
+      <h5 class="small-centered columns">Title and score</h5>
       <% @recs.each do |movie_id, score| %>
         <li>
-          Title: <%= Movie.where(id: movie_id)[0].title%>  Score: <%= score %>
+          <%= Movie.where(id: movie_id)[0].title%>
+          <div class="right">
+             <%= "%.1f" % score %>
+          </div>
         </li>
       <% end %>
-      </ul>
+    </div>
+      </ol>
 
     <% end %>
   </div>

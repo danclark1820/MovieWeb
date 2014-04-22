@@ -5,31 +5,36 @@
 </div>
 
 
-  <section >
-        <ul>
-          <% if !user_session %>
-            <li class="active">
-              <%= link_to 'Rate Movies', 'users/sign_up', class: "button" %>
-            </li>
-          <% else %>
-            <li class="active">
-              <%= link_to 'Add a Movie', new_movie_path, class: "button" %>
-              <%= link_to 'View Recommendations',"users/#{@user.id}", class: "button" %>
-            </li>
-          <% end %>
-        </ul>
+  <section>
+    <br>
+      <div class="large-6 large-centered text-center columns">
+        <% if !user_session %>
+          <div class="active">
+            <%= link_to 'Rate Movies', 'users/sign_up', class: "button" %>
+          </div>
+        <% else %>
+          <div class="active">
+            <%= link_to 'Add a Movie', new_movie_path, class: "button" %>
+            <%= link_to 'View Recommendations',"users/#{@user.id}", class: "button" %>
+          </div>
+        <% end %>
+      </div>
 
-        <ul class = "movies">
-          <% if user_session %>
-            <% @movies.each do |movie| %>
-              <li><%= movie.title %></li>
-              <ul>
-                <% (1..5).each do |i| %>
-                  <%= rating(current_user, i, movie) %>
-                <% end %>
-              </ul>
-            <% end %>
-            <%= paginate @movies %>
+      <ul class = "movies small-6 small-centered columns">
+        <% if user_session %>
+          <% @movies.each do |movie| %>
+            <li>
+              <%= movie.title %>
+              <div class="right">
+                  <% (1..5).each do |i| %>
+                    <%= rating(current_user, i, movie) %>
+                  <% end %>
+              </div>
+            </li>
           <% end %>
-        </ul>
+          <div class="large-10 large-centered columns" >
+            <%= paginate @movies %>
+          </div>
+        <% end %>
+      </ul>
     </section>

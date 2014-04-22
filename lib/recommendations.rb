@@ -28,22 +28,23 @@ module Recommendations
         next
       end
 
-      while totals.length < 25 && simSums.length < 25
-        person_ratings = User.where(id: person.id)[0].ratings
-        user_ratings = user.ratings
 
-        person_ratings.each do |rating|
-          #only score movies user has not seen
-          if !user_ratings.include?(rating)
-            #Similarity * Score
-            totals.default = 0
-            totals[rating.movie_id] += rating.stars * sim
-            #Sum of similarities
-            simSums.default = 0
-            simSums[rating.movie_id] += sim
-          end
+
+      person_ratings = User.where(id: person.id)[0].ratings
+      user_ratings = user.ratings
+
+      person_ratings.each do |rating|
+        #only score movies user has not seen
+        if !user_ratings.include?(rating)
+          #Similarity * Score
+          totals.default = 0
+          totals[rating.movie_id] += rating.stars * sim
+          #Sum of similarities
+          simSums.default = 0
+          simSums[rating.movie_id] += sim
         end
       end
+
 
     end
 
@@ -55,7 +56,7 @@ module Recommendations
       end
     end
 
-    @new_ranks = rankings.sort_by{|k,v| v}.reverse
+    rankings.sort_by{|k,v| v}.reverse.first(20)
 
   end
 end

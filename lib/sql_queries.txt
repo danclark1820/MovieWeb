@@ -19,3 +19,27 @@ Rating.find_by_sql "select corr(u1.stars, u2.stars)from ratings u1
   inner join ratings u2
   on u2.movie_id = u1.movie_id
   where u2.user_id = 300 and u1.user_id = 945;
+
+
+
+dcboy@example.com
+Star Wars
+Raiders of the Lost Ark
+Silence of the Lambs The
+Return of the Jedi
+Fargo
+Empire Strikes Back The
+Pulp Fiction
+Toy Story
+Alien
+Godfather The
+Fugitive The
+Princess Bride The
+Blade Runner
+Terminator The
+Contact
+2001: A Space Odyssey
+Terminator 2: Judgment Day
+Aliens
+Monty Python and the Holy Grail
+Twelve Monkeys

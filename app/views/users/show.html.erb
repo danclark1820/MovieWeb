@@ -1,25 +1,34 @@
-<h4><%= @user.email %></h4><br>
+
   <div>
     <% if @recs.length == 0 %>
 
-      <p>You have not rated enough movies for the system to return a recommendation. You should rate atleast twenty movies in order to get the best results. </p>
+      <p class="text-center">You have not rated enough movies for the system to return a recommendation. You should rate atleast twenty movies in order to get the best results. </p>
 
     <% else %>
 
       <ol>
-      <div class="small-6 small-centered columns">
-      <h5 class="small-centered columns">Title and score</h5>
-      <% @recs.each do |movie_id, score| %>
-        <li>
-          <%= Movie.where(id: movie_id)[0].title%>
-          <div class="right">
-             <%= "%.1f" % score %>
-          </div>
-        </li>
-      <% end %>
-    </div>
+        <div class="small-6 small-centered columns">
+          <h3 class="text-center">Based on your ratings, we thought you might like to check out the following...</h3><br>
+          <h5 style="text-align:left;float:left;">Title</h5>
+          <h6 style="text-align:right;float:right;">Score</h6>
+          <hr style="clear:both;"/>
+
+            <% @recs.each do |movie_id, score| %>
+              <li>
+                <%= Movie.where(id: movie_id)[0].title%>
+                <div class="right">
+                   <%= "%.1f" % score %>
+                </div>
+              </li>
+            <% end %>
+        </div>
       </ol>
 
-    <% end %>
+     <% end %>
+
+    <div class="active small-6 small-centered  text-center columns">
+      <%= link_to 'Add a Movie', '/movies/new', class: "button shiny-edge small radius " %>
+      <%= link_to 'Rate More Movies', '/movies', class: "button small radius" %>
+    </div>
   </div>
 

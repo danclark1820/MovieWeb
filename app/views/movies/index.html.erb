@@ -7,15 +7,15 @@
 
   <section>
     <br>
-      <div class="large-6 large-centered text-center columns">
+      <div class="small-6 small-centered text-center columns">
         <% if !user_session %>
           <div class="active">
-            <%= link_to 'Rate Movies', 'users/sign_up', class: "button" %>
+            <%= link_to 'Rate Movies', 'users/sign_up', class: "button small radius " %>
           </div>
         <% else %>
           <div class="active">
-            <%= link_to 'Add a Movie', new_movie_path, class: "button" %>
-            <%= link_to 'View Recommendations',"users/#{@user.id}", class: "button" %>
+            <%= link_to 'Add a Movie', new_movie_path, class: "button shiny-edge small radius " %>
+            <%= link_to 'View Recommendations',"users/#{@user.id}", class: "button small radius" %>
           </div>
         <% end %>
       </div>
@@ -32,7 +32,7 @@
               </div>
             </li>
           <% end %>
-          <div class="large-10 large-centered columns" >
+          <div class="small-10 small-centered text-center columns" >
             <%= paginate @movies %>
           </div>
         <% end %>

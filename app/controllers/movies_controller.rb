@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @movies = Movie.order(:title).page params[:page]
     @ratings = Rating.where(user: current_user)
     @user = current_user
   end

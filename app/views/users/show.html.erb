@@ -1,13 +1,19 @@
 <%= @user.email %>
   <div>
     <% if @recs.length == 0 %>
+
       <p>You have not rated enough movies for the system to return a recommendation </p>
+
     <% else %>
+
       <ul>
-        <% @recs.each do |movie_id, score| %>
-          <li>Title:<%= Movie.where(id: movie_id)[0].title%> Score:<%= score %></li>
-        <% end %>
+      <% @recs.each do |movie_id, score| %>
+        <li>
+          Title: <%= Movie.where(id: movie_id)[0].title%>  Score: <%= score %>
+        </li>
+      <% end %>
       </ul>
+
     <% end %>
   </div>
 

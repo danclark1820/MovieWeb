@@ -1,6 +1,11 @@
-<%= simple_form_for @movie do |f| %>
-  <%= f.input :title %>
-  <%= f.input :year %>
-  <%= f.input :url, label:'IMDb URL', as: :string %>
-  <%= f.submit "Add Movie" %>
-<% end %>
+<div class="large-4 large-centered columns">
+  <%= simple_form_for @movie do |f| %>
+    <%= f.input :title %>
+    <%= f.input :year %>
+    <%= f.input :url, label:'IMDb URL', as: :string %>
+
+    <div class="text-center">
+      <%= f.submit "Add Movie" %>
+    </div>
+  <% end %>
+</div>

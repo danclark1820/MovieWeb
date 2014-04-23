@@ -34,7 +34,6 @@ module Recommendations
       user_ratings = user.ratings
 
       person_ratings.each do |rating|
-        #only score movies user has not seen
         if !user_ratings.include?(rating)
           #Similarity * Score
           totals.default = 0
@@ -50,9 +49,9 @@ module Recommendations
 
     #create the normalized list
     rankings = {}
-    totals.each do |movie, sim_score_product|
+    totals.each do |movie, sim_score|
       simSums.each do |movie_simSum, sim|
-        rankings[movie] = sim_score_product/sim
+        rankings[movie] = sim_score/sim
       end
     end
 

@@ -1,4 +1,4 @@
-class Recommendaion < ActiveRecord::Base
+class Recommendation < ActiveRecord::Base
   validates :user, presence: true
   validates :movie, presence: true
   validates :rating, presence: true

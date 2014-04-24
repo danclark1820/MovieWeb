@@ -1,0 +1,7 @@
+<h1>Recommended Movies</h1>
+
+<ul>
+  <% @recommendations.each do |recommendation| %>
+    <li><%= link_to recommendation.movie.title, recommendation.movie %></li>
+  <% end %>
+</ul>

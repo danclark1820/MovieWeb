@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20140424120508) do
 
   add_index "ratings", ["user_id", "movie_id"], name: "index_ratings_on_user_id_and_movie_id", unique: true, using: :btree
 
-  create_table "recommendaions", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "movie_id"
-    t.integer  "score"
+  create_table "recommendations", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "movie_id",   null: false
+    t.integer  "score",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

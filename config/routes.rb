@@ -4,5 +4,5 @@ MovieWeb::Application.routes.draw do
   resources :ratings, only: [:create, :update]
 
   devise_for :users
-  resources :recommendations, only: [:show]
+  resources :recommendations, only: [:index]
 end

@@ -1,4 +1,10 @@
-module Recommendations
+class Recommendaion < ActiveRecord::Base
+  validates :user, presence: true
+  validates :movie, presence: true
+  validates :rating, presence: true
+
+  belongs_to :user
+  belongs_to :movie
 
   def sim_pearson(user_1, user_2)
     similarity = Rating.find_by_sql "select corr(u1.stars, u2.stars)
@@ -12,7 +18,7 @@ module Recommendations
   end
 
 
-  def getRecommendation(user)
+  def get_recommendation(user)
     totals = {}
     simSums={}
     all_users = User.all
@@ -43,7 +49,6 @@ module Recommendations
         end
       end
 
-
     end
 
     #create the normalized list
@@ -55,6 +60,6 @@ module Recommendations
     end
 
     rankings.sort_by{|k,v| v}.reverse.first(20)
-
   end
+
 end

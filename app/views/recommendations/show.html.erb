@@ -13,11 +13,11 @@
           <h6 style="text-align:right;float:right;">Score</h6>
           <hr style="clear:both;"/>
 
-            <% @recs.each do |movie_id, score| %>
+            <% @recs.each do |rec| %>
               <li>
-                <%= Movie.where(id: movie_id)[0].title%>
+                <%= Movie.where(id: rec.movie_id)[0].title%>
                 <div class="right">
-                   <%= "%.1f" % score %>
+                   <%= "%.1f" % rec.score %>
                 </div>
               </li>
             <% end %>

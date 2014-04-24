@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :raters, through: :ratings, source: :users
 
-  has_many :recommendations, dependant: :destroy
+  has_many :recommendations, dependent: :destroy
 
   paginates_per 20
 end

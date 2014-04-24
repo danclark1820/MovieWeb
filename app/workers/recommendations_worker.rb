@@ -6,5 +6,4 @@ class RecommendationsWorker
     user.getRecommendation(user)
   end
 
-
 end

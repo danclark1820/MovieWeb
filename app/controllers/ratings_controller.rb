@@ -20,7 +20,7 @@ class RatingsController < ApplicationController
     respond_to do |format|
       if @rating.update(rating_params)
         if current_user.ratings.count > 10
-          RecommendationsWorker.perform_async(current_user.id)
+          RecommendationsWorker.perform_in(15.minutes, current_user.id)
         end
         format.json { render json: @rating, status: :created}
       else

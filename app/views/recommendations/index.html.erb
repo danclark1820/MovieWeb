@@ -5,13 +5,17 @@
     <h5 style="text-align:left;float:left;">Title</h5>
     <h6 style="text-align:right;float:right;">Score</h6>
     <hr style="clear:both;"/>
-    <% @recommendations.each do |recommendation| %>
-      <li>
-        <%= link_to recommendation.movie.title, recommendation.movie.url %>
-        <div class="right">
-          <%= recommendation.score%>
-        <div>
-      </li>
+    <% if @recommendations == [] %>
+      <p class= text-center>Not enough movies have been rated to determine the best movies for you. We reccomend rating atleast 20.</p>
+    <% else %>
+      <% @recommendations.each do |recommendation| %>
+        <li>
+          <%= link_to recommendation.movie.title, recommendation.movie.url %>
+          <div class="right">
+            <%= recommendation.score%>
+          <div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
   <div class="active text-center">

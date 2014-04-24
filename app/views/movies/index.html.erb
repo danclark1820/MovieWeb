@@ -15,7 +15,7 @@
         <% else %>
           <div class="active">
             <%= link_to 'Add a Movie', new_movie_path, class: "button shiny-edge small radius " %>
-            <%= link_to 'View Recommendations',"users/#{@user.id}", class: "button small radius" %>
+            <%= link_to 'View Recommendations',"recommendations/#{@user.id}", class: "button small radius" %>
           </div>
         <% end %>
       </div>

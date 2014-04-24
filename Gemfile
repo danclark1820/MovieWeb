@@ -32,6 +32,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'sidekiq'
 gem 'kaminari'
 gem 'devise'
 gem 'simple_form'

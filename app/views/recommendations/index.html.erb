@@ -1,7 +1,21 @@
-<h1>Recommended Movies</h1>
+<div class="small-6 small-centered columns">
+  <h1 class="text-center">Recommended Movies</h1>
 
-<ul>
-  <% @recommendations.each do |recommendation| %>
-    <li><%= link_to recommendation.movie.title, recommendation.movie %></li>
-  <% end %>
-</ul>
+  <ul>
+    <h5 style="text-align:left;float:left;">Title</h5>
+    <h6 style="text-align:right;float:right;">Score</h6>
+    <hr style="clear:both;"/>
+    <% @recommendations.each do |recommendation| %>
+      <li>
+        <%= link_to recommendation.movie.title, recommendation.movie.url %>
+        <div class="right">
+          <%= recommendation.score%>
+        <div>
+      </li>
+    <% end %>
+  </ul>
+  <div class="active text-center">
+    <%= link_to 'Add a Movie', '/movies/new', class: "button small radius" %>
+    <%= link_to 'Rate More Movies', '/movies', class: "button small radius" %>
+  </div>
+</div>

@@ -1,8 +1,13 @@
 class RatingsController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
     @rating = Rating.new(rating_params)
     respond_to do |format|
       if @rating.save
+        if current_user.ratings.count > 10
+          RecommendationsWorker.perform_async(current_user.id)
+        end
         format.json {render json: @rating, status: :created }
       else
         puts "Error!"
@@ -14,6 +19,9 @@ class RatingsController < ApplicationController
     @rating = Rating.find_by(user: current_user, movie_id: rating_params[:rating_id])
     respond_to do |format|
       if @rating.update(rating_params)
+        if current_user.ratings.count > 10
+          RecommendationsWorker.perform_async(current_user.id)
+        end
         format.json { render json: @rating, status: :created}
       else
         puts "Error!"

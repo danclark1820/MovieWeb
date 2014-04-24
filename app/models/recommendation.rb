@@ -1,12 +1,12 @@
 class Recommendation < ActiveRecord::Base
   validates :user, presence: true
   validates :movie, presence: true
-  validates :rating, presence: true
+  validates :score, presence: true
 
   belongs_to :user
   belongs_to :movie
 
-  def sim_pearson(user_1, user_2)
+  def self.sim_pearson(user_1, user_2)
     similarity = Rating.find_by_sql "select corr(u1.stars, u2.stars)
       from ratings u1
         inner join ratings u2
@@ -14,11 +14,10 @@ class Recommendation < ActiveRecord::Base
         where u2.user_id = #{user_2.id} and u1.user_id = #{user_1.id};"
 
     similarity[0].corr
-
   end
 
 
-  def get_recommendation(user)
+  def self.get_recommendations(user)
     totals = {}
     simSums={}
     all_users = User.all
